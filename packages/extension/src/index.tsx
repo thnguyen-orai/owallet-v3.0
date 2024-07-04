@@ -51,6 +51,15 @@ import {
   LanguageToFiatCurrency,
 } from "@owallet/common";
 
+import { NftDetailsPage } from "./pages/nft/nft-details";
+
+import {
+  AdditonalIntlMessages,
+  AppIntlProvider,
+  ChainIdEnum,
+  LanguageToFiatCurrency,
+} from "@owallet/common";
+
 import { Ethereum, OWallet, TronWeb, Bitcoin } from "@owallet/provider";
 import { InExtensionMessageRequester } from "@owallet/router-extension";
 import * as Sentry from "@sentry/react";
@@ -64,10 +73,6 @@ import { SignEvmPage } from "./pages/sign/sign-evm";
 import { SignBtcPage } from "./pages/sign/sign-btc";
 import { ErrorBoundary } from "react-error-boundary";
 
-import { useErrorBoundary } from "react-error-boundary";
-import { Button } from "./components/common/button";
-import { Text } from "./components/common/text";
-import colors from "./theme/colors";
 const owallet = new OWallet(
   manifest.version,
   "core",
