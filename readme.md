@@ -1,20 +1,24 @@
 # OWallet
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/oraichain/owallet/blob/master/LICENSE.txt)
-[![Twitter: OWallet](https://img.shields.io/twitter/follow/oraichain.svg?style=social)](https://twitter.com/oraichain)
+[![Twitter: OWallet](https://img.shields.io/twitter/follow/owallet_dev.svg?style=social)](https://twitter.com/owallet_dev)
 
-## OWallet: Cosmos x EVM in one Wallet
-OWallet supports both Cosmos-based and EVM-based networks including Cosmos Hub, Oraichain, Osmosis, Juno, Ethereum, BSC, and more.
-OWallet is developed based on Keplr extension and currently maintained by Oraichain Labs.
+## OWallet: Universal gateway to Web3 in single native wallet
+OWallet supports all web3 activities on most common liqudity networks, which are
+- Bitcoin
+- EVM-based: Ethereum, BNB Chain, Oasis / Oasis Sapphire
+- Cosmos-based: Oraichain, Osmosis, Injective, Cosmos Hub...
+- TVM-based: TRON network
 
 ## OWallet’s key features
-- Support Cosmos-based and EVM-based networks
-- Enable IBC transfer
-- Improved sending and receiving of CW20 (standard fungible tokens based on Cosmwasm)
-- Compatible with Cosmwasm v1
+- Supports multiple accounts  Bitcoin & Cosmos-based & EVM-based networks simultaneously
+- Universal swap across various networks
+- Portfolio management with cross-chain assets: Multi accounts, Send/Recieve, Price history...
+- History of on-chain activities
+- Friendly interface on transaction confirmation
 
 ## Technical inquiries
-- OWallet source code: https://github.com/oraichain/owallet
+- Source code: https://github.com/oraichain/owallet
 - Support ticket: https://orai.io/support
 - OWallet website: https://owallet.dev
 - Discord https://discord.gg/JNyFnU789b
@@ -42,23 +46,25 @@ git submodule add --force https://github.com/oraichain/owallet-background.git pa
 4. Build it
 
 ```shell
-yarn build 
+yarn build
 or
 yarn build:libs
 ```
 
 ## Contributing
+OWallet is maintained & under active development mainly by Oraichain Labs, started as a [Keplr's fork](https://github.com/chainapsis/keplr-wallet/tree/0e137373ac4f526caf97b4694de47fe1ba543bd8).
+
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Release
 - iOS: https://apps.apple.com/app/owallet/id1626035069
-- Android: https://play.google.com/store/apps/details?id=com.io.owallet 
+- Android: https://play.google.com/store/apps/details?id=com.io.owallet
 - Chrome extension: https://chrome.google.com/webstore/detail/owallet/hhejbopdnpbjgomhpmegemnjogflenga
 
 ## License
 ```shell
 /*
- * Copyright 2022 Oraichain Labs JSC.
+ * Copyright 2022 Oraichain Labs Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -71,12 +77,12 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
  *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
- 
+
  * The repository (this work) includes work covered by the following copyright and permission notices:
  *
  *    Copyright 2020 Chainapsis, Inc
  *    Licensed under the Apache License, Version 2.0.
- * 
+ *
  * NOTICE: The source code branch of Chainapsis Inc. under Apache 2.0 license:
  *  https://github.com/chainapsis/keplr-wallet/tree/0e137373ac4f526caf97b4694de47fe1ba543bd8
  */
