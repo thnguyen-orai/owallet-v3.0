@@ -29,6 +29,7 @@ import { SkeletonNft } from "./components/nft-skeleton";
 import { ChainIdEnum } from "@owallet/common";
 import { useQuery } from "@apollo/client";
 import { OwnedTokens } from "@src/graphql/queries";
+import { ProviderGraphQL } from "@src/graphql/apollo-client";
 export const NftsScreen: FunctionComponent = observer((props) => {
   const route = useRoute<
     RouteProp<
@@ -80,6 +81,7 @@ const NftsStargazeScreen: FC<{
       sortBy: "ACQUIRED_DESC",
       offset: 0,
     },
+    context: { provider: ProviderGraphQL.STARGAZE },
     fetchPolicy: "cache-and-network",
   });
   const [refreshing, setRefreshing] = useState(false);

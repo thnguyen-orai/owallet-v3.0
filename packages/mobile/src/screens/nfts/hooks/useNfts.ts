@@ -1,4 +1,4 @@
-import { OwnedTokens } from "./../../../graphql/queries/OwnerTokens";
+import { OwnedTokens } from "@src/graphql/queries";
 import { ChainIdEnum, unknownToken } from "@owallet/common";
 import { IItemNft } from "../types/nft.types";
 import { useQuery } from "@apollo/client";
@@ -8,6 +8,8 @@ import { urlAiRight } from "@src/common/constants";
 import { ChainInfo } from "@owallet/types";
 import { AccountStore } from "@owallet/stores";
 import { ChainStore } from "@src/stores/chain";
+import { ProviderGraphQL } from "@src/graphql/apollo-client";
+import { GetWallets } from "@src/graphql/queries/talis";
 interface Nfts {
   chainInfo: ChainInfo;
   data: IItemNft[];
@@ -73,6 +75,7 @@ export const useNfts = (
         sortBy: "ACQUIRED_DESC",
         offset: 0,
       },
+      context: { provider: ProviderGraphQL.STARGAZE },
       fetchPolicy: "cache-and-network",
     });
     if (error) {
@@ -91,9 +94,58 @@ export const useNfts = (
       data: nfts || [],
     };
   };
+  const handleNftsForTalis = (): DataHandle => {
+    const { chainId, stakeCurrency } = chainInfoStargaze;
+    const account = accountStore.getAccount(ChainIdEnum.Oraichain);
+    const address = account.bech32Address;
+    const { loading, error, data } = useQuery(GetWallets, {
+      variables: {
+        filter: {
+          address: {
+            eq: "orai1hvr9d72r5um9lvt0rpkd4r75vrsqtw6yujhqs2",
+          },
+        },
+      },
+      context: { provider: ProviderGraphQL.TALIS },
+      fetchPolicy: "no-cache",
+    });
+    console.log(data, "data");
+    // const { loading, error, data } = useQuery(OwnedTokens, {
+    //   variables: {
+    //     filterForSale: null,
+    //     owner: address,
+    //     limit: 4,
+    //     filterByCollectionAddrs: null,
+    //     sortBy: "ACQUIRED_DESC",
+    //     offset: 0
+    //   },
+    //   context: { provider: ProviderGraphQL.TALIS },
+    //   fetchPolicy: "cache-and-network"
+    // });
+    // if (error) {
+    //   console.error("Error fetching NFTs from Stargaze:", error);
+    //   return {
+    //     total: 0,
+    //     data: []
+    //   };
+    // }
+
+    // const nfts = (data?.tokens?.tokens || [])
+    //   .filter((item, index) => item?.media?.type === "image")
+    //   .map((nft, index) => processDataStargazeNft(nft, stakeCurrency));
+    // return {
+    //   total: data?.tokens?.pageInfo?.total || 0,
+    //   data: nfts || []
+    // };
+    return {
+      total: 0,
+      data: [],
+    };
+  };
   const nfts = {
-    [ChainIdEnum.Oraichain]: handleNftsForOraichain(),
+    // [ChainIdEnum.Oraichain]: handleNftsForOraichain(),
     [ChainIdEnum.Stargaze]: handleNftsForStargaze(),
+    [ChainIdEnum.Oraichain]: handleNftsForTalis(),
   };
   return isAllNetworks
     ? [

@@ -7,6 +7,7 @@ import { API } from "@src/common/api";
 import { Token } from "@src/graphql/queries";
 import { urlAiRight } from "@src/common/constants";
 import { ChainInfo } from "@owallet/types";
+import { ProviderGraphQL } from "@src/graphql/apollo-client";
 export const useNft = (
   chainInfo: ChainInfo,
   tokenId,
@@ -37,6 +38,7 @@ export const useNft = (
         collectionAddr: contractAddress,
         tokenId: tokenId,
       },
+      context: { provider: ProviderGraphQL.STARGAZE },
     });
     return processDataStargazeNft(data?.token, stakeCurrency);
   };
