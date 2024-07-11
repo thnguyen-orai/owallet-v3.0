@@ -1,7 +1,24 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
-const url = "https://graphql.mainnet.stargaze-apis.com/graphql";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloLink,
+  HttpLink,
+} from "@apollo/client";
+
+const stargaze = new HttpLink({
+  uri: "https://graphql.mainnet.stargaze-apis.com/graphql",
+});
+
+const talis = new HttpLink({
+  uri: "https://orai.talis.art/api/graphql",
+});
+
 const clientApollo = new ApolloClient({
-  uri: url,
+  link: ApolloLink.split(
+    (operation) => operation.getContext().apiName === "stargaze", // boolean check
+    stargaze, // if true
+    talis // if fa
+  ),
   cache: new InMemoryCache(),
 });
 
