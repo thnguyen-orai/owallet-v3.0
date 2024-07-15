@@ -69,75 +69,78 @@ export const mockKeyStoreScryptLedger: KeyStore = {
   },
   addresses: { cosmos: "cosmos1eu2ecyzedvkvsfcd5vfht4whgx3uf22fjj9a4n" },
 };
-export const mockKeyStorePbkdf2PrivateKey: KeyStore = {
-  version: "1.2",
-  type: "privateKey",
-  coinTypeForChain: {},
-  bip44HDPath: { coinType: 118, account: 0, change: 0, addressIndex: 0 },
-  meta: { name: "orai", __id__: "1" },
-  crypto: {
-    cipher: "aes-128-ctr",
-    cipherparams: { iv: "" },
-    ciphertext:
-      "73addd8bd3eaa4ba122209fb8664088e70c2333d9a48f9ac38bfbf7469f854c4e7011dd599553dadb56b57d5c67396923cf54b1c286232f81ed3de10b6d001a2",
-    kdf: "pbkdf2",
-    kdfparams: {
-      salt: "00944e5b193aab750fe96b13ed6d2e7d7e1cc87b48310aeb40b3e695bdad43c6",
-      dklen: 32,
-      n: 131072,
-      r: 8,
-      p: 1,
-    },
-    mac: "0a7de7b54b270a7687318843d607cebe6ed841fd57578a82a85ac0c1d64e99e6",
-  },
-  addresses: undefined,
-};
-export const mockKeyStoreSha256PrivateKey: KeyStore = {
-  version: "1.2",
-  type: "privateKey",
-  coinTypeForChain: {},
-  bip44HDPath: { coinType: 118, account: 0, change: 0, addressIndex: 0 },
-  meta: { name: "orai", __id__: "1" },
-  crypto: {
-    cipher: "aes-128-ctr",
-    cipherparams: { iv: "" },
-    ciphertext:
-      "3c716e178b60958fe067e811272789f11904ded45f16d9ae0f8b40ed72fbcac45eaf4d2b061df974d6eed8ec27c434fd0857f4b0023df012efd98891b4150c50",
-    kdf: "sha256",
-    kdfparams: {
-      salt: "4326a78d5ec418d9c7eb5d30bece06da0e3808123cd57bd399a9ab700af4f33d",
-      dklen: 32,
-      n: 131072,
-      r: 8,
-      p: 1,
-    },
-    mac: "b02ee797c89da2a7f15740571434be44290140cb1abe583fc3a645b3a449c724",
-  },
-  addresses: undefined,
-};
-export const mockKeyStoreScryptPrivateKey: KeyStore = {
-  version: "1.2",
-  type: "privateKey",
-  coinTypeForChain: {},
-  bip44HDPath: { coinType: 118, account: 0, change: 0, addressIndex: 0 },
-  meta: { name: "orai", __id__: "1" },
-  crypto: {
-    cipher: "aes-128-ctr",
-    cipherparams: { iv: "" },
-    ciphertext:
-      "edf19e910d37e3b0bab8db7205899a77960abee4b810fd1c3760794a838f5cd2b27e8351022eefe39929d94c7634dbb919dc8a90dab7907d7a49b0a4a49301b2",
-    kdf: "scrypt",
-    kdfparams: {
-      salt: "b1bff5bf9bfa491b861872de1e59071a92ccc7d19dcccc53828b565efbf24870",
-      dklen: 32,
-      n: 131072,
-      r: 8,
-      p: 1,
-    },
-    mac: "d9b684a86d046bfc3bebc9ee2666f11aa35fa50dea7404d0a1bc3e9d31e9c849",
-  },
-  addresses: undefined,
-};
+export const mockKeyStorePbkdf2PrivateKey = null;
+// export const mockKeyStorePbkdf2PrivateKey: KeyStore = {
+//   version: "1.2",
+//   type: "privateKey",
+//   coinTypeForChain: {},
+//   bip44HDPath: { coinType: 118, account: 0, change: 0, addressIndex: 0 },
+//   meta: { name: "orai", __id__: "1" },
+//   crypto: {
+//     cipher: "aes-128-ctr",
+//     cipherparams: { iv: "" },
+//     ciphertext:
+//       "73addd8bd3eaa4ba122209fb8664088e70c2333d9a48f9ac38bfbf7469f854c4e7011dd599553dadb56b57d5c67396923cf54b1c286232f81ed3de10b6d001a2",
+//     kdf: "pbkdf2",
+//     kdfparams: {
+//       salt: "00944e5b193aab750fe96b13ed6d2e7d7e1cc87b48310aeb40b3e695bdad43c6",
+//       dklen: 32,
+//       n: 131072,
+//       r: 8,
+//       p: 1,
+//     },
+//     mac: "0a7de7b54b270a7687318843d607cebe6ed841fd57578a82a85ac0c1d64e99e6",
+//   },
+//   addresses: undefined,
+// };
+// export const mockKeyStoreSha256PrivateKey: KeyStore = {
+//   version: "1.2",
+//   type: "privateKey",
+//   coinTypeForChain: {},
+//   bip44HDPath: { coinType: 118, account: 0, change: 0, addressIndex: 0 },
+//   meta: { name: "orai", __id__: "1" },
+//   crypto: {
+//     cipher: "aes-128-ctr",
+//     cipherparams: { iv: "" },
+//     ciphertext:
+//       "3c716e178b60958fe067e811272789f11904ded45f16d9ae0f8b40ed72fbcac45eaf4d2b061df974d6eed8ec27c434fd0857f4b0023df012efd98891b4150c50",
+//     kdf: "sha256",
+//     kdfparams: {
+//       salt: "4326a78d5ec418d9c7eb5d30bece06da0e3808123cd57bd399a9ab700af4f33d",
+//       dklen: 32,
+//       n: 131072,
+//       r: 8,
+//       p: 1,
+//     },
+//     mac: "b02ee797c89da2a7f15740571434be44290140cb1abe583fc3a645b3a449c724",
+//   },
+//   addresses: undefined,
+// };
+// export const mockKeyStoreScryptPrivateKey: KeyStore = {
+//   version: "1.2",
+//   type: "privateKey",
+//   coinTypeForChain: {},
+//   bip44HDPath: { coinType: 118, account: 0, change: 0, addressIndex: 0 },
+//   meta: { name: "orai", __id__: "1" },
+//   crypto: {
+//     cipher: "aes-128-ctr",
+//     cipherparams: { iv: "" },
+//     ciphertext:
+//       "edf19e910d37e3b0bab8db7205899a77960abee4b810fd1c3760794a838f5cd2b27e8351022eefe39929d94c7634dbb919dc8a90dab7907d7a49b0a4a49301b2",
+//     kdf: "scrypt",
+//     kdfparams: {
+//       salt: "b1bff5bf9bfa491b861872de1e59071a92ccc7d19dcccc53828b565efbf24870",
+//       dklen: 32,
+//       n: 131072,
+//       r: 8,
+//       p: 1,
+//     },
+//     mac: "d9b684a86d046bfc3bebc9ee2666f11aa35fa50dea7404d0a1bc3e9d31e9c849",
+//   },
+//   addresses: undefined,
+// };
+export const mockKeyStoreSha256PrivateKey = null;
+export const mockKeyStoreScryptPrivateKey = null;
 export const mockKeyStorePbkdf2Mnemonic: KeyStore = {
   version: "1.2",
   type: "mnemonic",
