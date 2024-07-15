@@ -48,7 +48,7 @@ import { LedgerService } from "../ledger";
 import { request } from "../tx";
 import { TYPED_MESSAGE_SCHEMA } from "./constants";
 import { Crypto, KeyStore } from "./crypto";
-import PRE from "proxy-recrypt-js";
+// import PRE from "proxy-recrypt-js";
 import {
   CommonCrypto,
   ECDSASignature,
@@ -1374,12 +1374,14 @@ export class KeyRing {
       throw new Error("Key Store is empty");
     }
 
-    const privKey = this.loadPrivKey(getCoinTypeByChainId(chainId));
-    const privKeyHex = Buffer.from(privKey.toBytes()).toString("hex");
-    const decryptedData = PRE.decryptData(privKeyHex, message[0]);
-    return {
-      decryptedData,
-    };
+    // const privKey = this.loadPrivKey(getCoinTypeByChainId(chainId));
+    // const privKeyHex = Buffer.from(privKey.toBytes()).toString("hex");
+    // const decryptedData = PRE.decryptData(privKeyHex, message[0]);
+    // return {
+    //   decryptedData,
+    // };
+    // return;
+    throw new Error("Not support this method");
   }
 
   public async signProxyReEncryptionData(
@@ -1394,13 +1396,15 @@ export class KeyRing {
       throw new Error("Key Store is empty");
     }
 
-    const privKey = this.loadPrivKey(getCoinTypeByChainId(chainId));
-    const privKeyHex = Buffer.from(privKey.toBytes()).toString("hex");
-    const rk = PRE.generateReEncrytionKey(privKeyHex, message[0]);
+    // const privKey = this.loadPrivKey(getCoinTypeByChainId(chainId));
+    // const privKeyHex = Buffer.from(privKey.toBytes()).toString("hex");
+    // const rk = PRE.generateReEncrytionKey(privKeyHex, message[0]);
 
-    return {
-      rk,
-    };
+    // return {
+    //   rk,
+    // };
+    //TODO: need comment for security dependencies
+    throw new Error("Not support this method");
   }
 
   public async signDecryptData(
