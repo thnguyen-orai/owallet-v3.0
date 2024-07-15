@@ -127,7 +127,10 @@
     "@sentry/cli": "=2.21.3",
     "@sentry/integrations": "=7.80.0",
     "@sentry-internal/tracing": "=7.80.0",
-    "@sentry/hub": "=7.80.0"
+    "@sentry/hub": "=7.80.0",
+    "tronweb": "5.3.2",
+    "secretjs": "1.12.5",
+    "axios": "1.7.2"
   },
   "browser": {
     "assert": false
