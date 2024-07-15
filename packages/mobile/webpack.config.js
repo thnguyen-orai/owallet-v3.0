@@ -31,6 +31,7 @@ module.exports = (env, args) => {
     name: 'mobile',
     mode: isEnvDevelopment ? 'development' : 'production',
     // In development environment, turn on source map.
+    //test push
     devtool: isEnvDevelopment ? 'cheap-source-map' : false,
     // In development environment, webpack watch the file changes, and recompile
     watch: isEnvDevelopment,
