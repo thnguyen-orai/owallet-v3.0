@@ -34,10 +34,9 @@ export class ObservableQueryErc20Balance extends ObservableChainQuery<Erc20Contr
       const web3 = new Web3(
         getRpcByChainId(this.chainGetter.getChain(this.chainId), this.chainId)
       );
-      // @ts-ignore
       const contract = new web3.eth.Contract(ERC20_ABI, this.contractAddress);
 
-      const balance = await contract.methods
+      const balance: string = await contract.methods
         .balanceOf(this.walletAddress)
         .call();
 

@@ -110,13 +110,14 @@ export class ObservableQueryTronBalances extends ObservableChainQuery<Balances> 
       const web3 = new Web3(
         getRpcByChainId(this.chainGetter.getChain(this.chainId), this.chainId)
       );
+      //TODO: check for bigInt ethBalance
       const ethBalance = await web3.eth.getBalance(this.walletAddress);
 
       const denomNative = this.chainGetter.getChain(this.chainId).stakeCurrency
         .coinMinimalDenom;
       const balances: CoinPrimitive[] = [
         {
-          amount: ethBalance,
+          amount: ethBalance.toString(),
           denom: denomNative,
         },
       ];

@@ -49,8 +49,9 @@ export class ObservableQueryGasEvmContractInner extends ObservableChainQuery<num
         ERC20_ABI,
         contract_address
       );
+      //TODO: need check for toWei method with params: 'gwei'
       const estimateGas = await tokenInfo.methods
-        .transfer(to, Web3.utils.toWei(amount))
+        .transfer(to, Web3.utils.toWei(amount, "gwei"))
         .estimateGas({
           from: from,
         });
@@ -62,7 +63,8 @@ export class ObservableQueryGasEvmContractInner extends ObservableChainQuery<num
       return {
         status: 1,
         staled: false,
-        data: estimateGas,
+        //TODO: need check estimateGas
+        data: Number(estimateGas),
         timestamp: Date.now(),
       };
     } catch (error) {

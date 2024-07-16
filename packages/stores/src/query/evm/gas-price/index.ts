@@ -36,7 +36,7 @@ export class ObservableQueryGasPriceInner extends ObservableChainQuery<string> {
       return {
         status: 1,
         staled: false,
-        data: gasPrice,
+        data: gasPrice.toString(),
         timestamp: Date.now(),
       };
     } catch (error) {

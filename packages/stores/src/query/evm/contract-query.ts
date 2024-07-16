@@ -32,7 +32,6 @@ export class ObservableEvmContractChainQuery<
       const resultFetchBalance = response.data;
       const provider = this.chainGetter.getChain(this.chainId).rest;
       const web3 = new Web3(provider);
-      // @ts-ignore
       const tokenInfo = new web3.eth.Contract(ERC20_ABI, this.contractAddress);
 
       const tokenDecimal = await tokenInfo.methods.decimals().call();
@@ -42,8 +41,9 @@ export class ObservableEvmContractChainQuery<
       if (!resultFetchBalance) {
         throw new Error("Failed to get the response from the contract");
       }
-
-      const tokenInfoData = {
+      //TODO: need check type for tokenDecimal,tokenSymbol,tokenName
+      const tokenInfoData: any = {
+        //@ts-ignore
         decimals: parseInt(tokenDecimal),
         symbol: tokenSymbol,
         name: tokenName,

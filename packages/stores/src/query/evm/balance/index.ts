@@ -168,7 +168,7 @@ export class ObservableQueryEvmBalances extends ObservableChainQuery<Balances> {
         .coinMinimalDenom;
       const balances: CoinPrimitive[] = [
         {
-          amount: ethBalance,
+          amount: ethBalance.toString(),
           denom: denomNative,
         },
       ];
