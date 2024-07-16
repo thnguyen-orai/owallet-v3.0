@@ -1,4 +1,9 @@
-import { AxiosRequestConfig, AxiosResponse, AxiosError } from "axios";
+import {
+  AxiosRequestConfig,
+  AxiosResponse,
+  AxiosError,
+  InternalAxiosRequestConfig,
+} from "axios";
 import settle from "axios/lib/core/settle";
 import buildURL from "axios/lib/helpers/buildURL";
 import buildFullPath from "axios/lib/core/buildFullPath";
@@ -10,19 +15,21 @@ import { isUndefined } from "axios/lib/utils";
  * - Check if timeout
  */
 export const fetchAdapter = async (
-  config: AxiosRequestConfig
+  config: InternalAxiosRequestConfig
 ): Promise<AxiosResponse> => {
   const request = createRequest(config);
   const promiseChain = [getResponse(request, config)];
 
   if (config.timeout && config.timeout > 0) {
     promiseChain.push(
-      new Promise((res) => {
+      new Promise((res, rej) => {
         setTimeout(() => {
           const message = config.timeoutErrorMessage
             ? config.timeoutErrorMessage
             : "timeout of " + config.timeout + "ms exceeded";
-          res(createError(message, config, "ECONNABORTED", request));
+          rej(
+            new AxiosError(message, AxiosError.ECONNABORTED, config, request)
+          );
         }, config.timeout);
       })
     );
@@ -44,13 +51,15 @@ export const fetchAdapter = async (
  */
 async function getResponse(
   request: Request,
-  config: AxiosRequestConfig
+  config: InternalAxiosRequestConfig
 ): Promise<AxiosResponse> {
   let stageOne: Response;
   try {
     stageOne = await fetch(request);
   } catch (e) {
-    return createError("Network Error", config, "ERR_NETWORK", request);
+    return Promise.reject(
+      new AxiosError("Network Error", AxiosError.ERR_NETWORK, config, request)
+    );
   }
 
   const response: AxiosResponse = {
@@ -135,22 +144,3 @@ function createRequest(config: AxiosRequestConfig): Request {
  * @param {Object} [response] The response.
  * @returns {Error} The created error.
  */
-function createError(
-  message: string,
-  config: AxiosRequestConfig,
-  code: string,
-  request: Request
-): AxiosResponse<AxiosError> {
-  const err = new AxiosError(message ?? "Unknown error", code, config, request);
-
-  const response: AxiosResponse = {
-    status: Number(err.code),
-    statusText: err.status,
-    headers: Object.fromEntries(request.headers),
-    config,
-    request,
-    data: err,
-  };
-
-  return response;
-}
