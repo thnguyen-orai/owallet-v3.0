@@ -184,7 +184,6 @@ export const decodeParams = async (types, output, ignoreMethodHash) => {
   }, []);
 };
 
-
 export const estimateBandwidthTron = (signedTxn) => {
   const DATA_HEX_PROTOBUF_EXTRA = 3;
   const MAX_RESULT_SIZE_IN_TX = 64;

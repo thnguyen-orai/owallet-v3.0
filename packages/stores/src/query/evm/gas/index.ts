@@ -55,8 +55,7 @@ export class ObservableQueryGasInner extends ObservableChainQuery<number> {
       return {
         status: 1,
         staled: false,
-        //TODO: Convert Bigint to number
-        data: Number(estimateGas),
+        data: estimateGas,
         timestamp: Date.now(),
       };
     } catch (error) {

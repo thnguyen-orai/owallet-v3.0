@@ -151,7 +151,12 @@ export class RecipientConfig extends TxChainSetter implements IRecipientConfig {
             return new InvalidTronAddressError(`Invalid tron address`);
           }
         } else {
-          if (!Web3.utils.isAddress(this.recipient))
+          if (
+            !Web3.utils.isAddress(
+              this.recipient,
+              Number(this.chainInfo.chainId)
+            )
+          )
             return new InvalidEvmAddressError(`Invalid evm address`);
         }
       } else if (this.chainInfo.networkType === "bitcoin") {

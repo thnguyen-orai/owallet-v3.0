@@ -147,7 +147,7 @@ export class SwapEvmWallet extends EvmWallet {
     //@ts-ignore
     this.tronWeb = window.tronWeb;
     // used 'any' to fix the following bug: https://github.com/ethers-io/ethers.js/issues/1107 -> https://github.com/Geo-Web-Project/cadastre/pull/220/files
-    //TODO: check 
+    //TODO: check
     this.provider = new ethers.providers.Web3Provider(this.ethereum, "any");
   }
 

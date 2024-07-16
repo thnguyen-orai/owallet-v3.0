@@ -115,7 +115,7 @@ export const SignEthereumModal: FunctionComponent<{
 
         chainStore.selectChain(data.data.chainId);
         if (gasDataSign) {
-          gasConfig.setGas(Web3.utils.hexToNumber(gasDataSign).toString());
+          gasConfig.setGas(Web3.utils.hexToNumber(gasDataSign));
         }
         if (gasPriceDataSign) {
           gasConfig.setGasPrice(Web3.utils.hexToNumberString(gasPriceDataSign));

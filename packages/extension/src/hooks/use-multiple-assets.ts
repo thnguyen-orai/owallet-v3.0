@@ -14,7 +14,7 @@ import {
   parseRpcBalance,
 } from "@owallet/common";
 import { CoinPretty, Dec, DecUtils, PricePretty } from "@owallet/unit";
-import Web3 from 'web3';
+import Web3 from "web3";
 import { MulticallQueryClient } from "@oraichain/common-contracts-sdk";
 import { fromBinary, toBinary } from "@cosmjs/cosmwasm-stargate";
 import { OraiswapTokenTypes } from "@oraichain/oraidex-contracts-sdk";

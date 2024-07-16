@@ -41,9 +41,8 @@ export class ObservableEvmContractChainQuery<
       if (!resultFetchBalance) {
         throw new Error("Failed to get the response from the contract");
       }
-      //TODO: need check type for tokenDecimal,tokenSymbol,tokenName
-      const tokenInfoData: any = {
-        //@ts-ignore
+
+      const tokenInfoData = {
         decimals: parseInt(tokenDecimal),
         symbol: tokenSymbol,
         name: tokenName,

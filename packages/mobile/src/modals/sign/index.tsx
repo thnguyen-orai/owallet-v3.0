@@ -5,7 +5,13 @@ import { ScrollView } from "react-native-gesture-handler";
 import { Text } from "@src/components/text";
 import { useStyle } from "../../styles";
 import { useStore } from "../../stores";
-import { useFeeConfig, useGasConfig, useMemoConfig, useSignDocAmountConfig, useSignDocHelper } from "@owallet/hooks";
+import {
+  useFeeConfig,
+  useGasConfig,
+  useMemoConfig,
+  useSignDocAmountConfig,
+  useSignDocHelper,
+} from "@owallet/hooks";
 import { Msg as AminoMsg } from "@cosmjs/launchpad";
 import { observer } from "mobx-react-lite";
 import { useUnmount } from "../../hooks";
@@ -27,7 +33,13 @@ export const SignModal: FunctionComponent<{
   bottomSheetModalConfig?: Omit<BottomSheetProps, "snapPoints" | "children">;
 }> = registerModal(
   observer(({}) => {
-    const { chainStore, accountStore, queriesStore, signInteractionStore, appInitStore } = useStore();
+    const {
+      chainStore,
+      accountStore,
+      queriesStore,
+      signInteractionStore,
+      appInitStore,
+    } = useStore();
     useUnmount(() => {
       signInteractionStore.rejectAll();
     });
@@ -42,7 +54,12 @@ export const SignModal: FunctionComponent<{
 
     // Make the gas config with 1 gas initially to prevent the temporary 0 gas error at the beginning.
     const gasConfig = useGasConfig(chainStore, chainId, 1);
-    const amountConfig = useSignDocAmountConfig(chainStore, chainId, accountStore.getAccount(chainId).msgOpts, signer);
+    const amountConfig = useSignDocAmountConfig(
+      chainStore,
+      chainId,
+      accountStore.getAccount(chainId).msgOpts,
+      signer
+    );
     const feeConfig = useFeeConfig(
       chainStore,
       chainId,
@@ -69,7 +86,10 @@ export const SignModal: FunctionComponent<{
         setChainId(data.data.signDocWrapper.chainId);
         gasConfig.setGas(data.data.signDocWrapper.gas);
         memoConfig.setMemo(data.data.signDocWrapper.memo);
-        if (data.data.signOptions.preferNoSetFee && data.data.signDocWrapper.fees[0]) {
+        if (
+          data.data.signOptions.preferNoSetFee &&
+          data.data.signDocWrapper.fees[0]
+        ) {
           feeConfig.setManualFee(data.data.signDocWrapper.fees[0]);
         } else {
           feeConfig.setFeeType("average");
@@ -80,7 +100,13 @@ export const SignModal: FunctionComponent<{
       if (signInteractionStore.waitingEthereumData) {
         const data = signInteractionStore.waitingEthereumData;
       }
-    }, [feeConfig, gasConfig, memoConfig, signDocHelper, signInteractionStore.waitingData]);
+    }, [
+      feeConfig,
+      gasConfig,
+      memoConfig,
+      signDocHelper,
+      signInteractionStore.waitingData,
+    ]);
 
     useEffect(() => {
       if (feeConfig.feeCurrency && !feeConfig.fee) {
@@ -92,7 +118,9 @@ export const SignModal: FunctionComponent<{
       return;
     }, [feeConfig, appInitStore.getInitApp.feeOption]);
 
-    const mode = signDocHelper.signDocWrapper ? signDocHelper.signDocWrapper.mode : "none";
+    const mode = signDocHelper.signDocWrapper
+      ? signDocHelper.signDocWrapper.mode
+      : "none";
     const msgs = signDocHelper.signDocWrapper
       ? signDocHelper.signDocWrapper.mode === "amino"
         ? signDocHelper.signDocWrapper.aminoSignDoc.msgs
@@ -109,7 +137,9 @@ export const SignModal: FunctionComponent<{
       try {
         if (signDocHelper.signDocWrapper) {
           //
-          await signInteractionStore.approveAndWaitEnd(signDocHelper.signDocWrapper);
+          await signInteractionStore.approveAndWaitEnd(
+            signDocHelper.signDocWrapper
+          );
         }
       } catch (error) {
         console.log(error);
@@ -146,7 +176,7 @@ export const SignModal: FunctionComponent<{
                   weight={"700"}
                   style={{
                     textAlign: "center",
-                    paddingVertical: 20
+                    paddingVertical: 20,
                   }}
                 >
                   {`${title} confirmation`.toUpperCase()}
@@ -158,7 +188,10 @@ export const SignModal: FunctionComponent<{
         });
       } else if (mode === "direct") {
         return (msgs as any[]).map((msg, i) => {
-          const { title, content } = renderDirectMessage(msg, chainInfo.currencies);
+          const { title, content } = renderDirectMessage(
+            msg,
+            chainInfo.currencies
+          );
 
           return (
             <View key={i.toString()}>
@@ -168,7 +201,7 @@ export const SignModal: FunctionComponent<{
                   weight={"700"}
                   style={{
                     textAlign: "center",
-                    paddingVertical: 20
+                    paddingVertical: 20,
                   }}
                 >
                   {`${title} confirmation`.toUpperCase()}
@@ -190,7 +223,7 @@ export const SignModal: FunctionComponent<{
         buttonBottom={
           <View
             style={{
-              paddingBottom: 5 + (bottom || 0)
+              paddingBottom: 5 + (bottom || 0),
             }}
           >
             <View
@@ -199,7 +232,7 @@ export const SignModal: FunctionComponent<{
                 paddingHorizontal: 16,
                 borderBottomLeftRadius: 24,
                 borderBottomRightRadius: 24,
-                marginBottom: 24
+                marginBottom: 24,
               }}
             >
               <FeeInSign
@@ -226,23 +259,25 @@ export const SignModal: FunctionComponent<{
               loadingApprove={signInteractionStore.isLoading}
               styleApprove={{
                 borderRadius: 99,
-                backgroundColor: isDisable ? colors["primary-surface-disable"] : colors["primary-surface-default"]
+                backgroundColor: isDisable
+                  ? colors["primary-surface-disable"]
+                  : colors["primary-surface-default"],
               }}
               onPressClose={_onPressReject}
               onPressApprove={_onPressApprove}
               styleClose={{
                 borderRadius: 99,
-                backgroundColor: colors["neutral-surface-bg"]
+                backgroundColor: colors["neutral-surface-bg"],
               }}
             />
           </View>
         }
         style={{
           backgroundColor: colors["neutral-surface-card"],
-          maxHeight: metrics.screenHeight - 250
+          maxHeight: metrics.screenHeight - 250,
         }}
         containerStyle={{
-          paddingBottom: 16
+          paddingBottom: 16,
         }}
       >
         <View
@@ -256,6 +291,6 @@ export const SignModal: FunctionComponent<{
     );
   }),
   {
-    disableSafeArea: false
+    disableSafeArea: false,
   }
 );

@@ -32,12 +32,12 @@ export class ObservableQueryErc20ContactInfoInner extends ObservableChainQuery<E
     );
     // @ts-ignore
     const contract = new web3.eth.Contract(ERC20_ABI, this.contractAddress);
-    //TODO: need check
-    const tokenDecimal = (await contract.methods.decimals().call()) as any;
+
+    const tokenDecimal = await contract.methods.decimals().call();
     const tokenSymbol = await contract.methods.symbol().call();
     const tokenName = await contract.methods.name().call();
     const total_supply = await contract.methods.totalSupply().call();
-    //TODO: need check
+
     const tokenInfoData: Erc20ContractTokenInfo = {
       decimals: parseInt(tokenDecimal),
       symbol: tokenSymbol,
@@ -50,10 +50,10 @@ export class ObservableQueryErc20ContactInfoInner extends ObservableChainQuery<E
 
         total_supply: total_supply,
       },
-    } as any;
+    };
 
     return {
-      data: tokenInfoData as any,
+      data: tokenInfoData,
       status: 1,
       staled: false,
       timestamp: Date.now(),

@@ -63,8 +63,7 @@ export class ObservableQueryGasEvmContractInner extends ObservableChainQuery<num
       return {
         status: 1,
         staled: false,
-        //TODO: need check estimateGas
-        data: Number(estimateGas),
+        data: estimateGas,
         timestamp: Date.now(),
       };
     } catch (error) {

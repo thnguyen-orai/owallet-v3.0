@@ -7,7 +7,7 @@ import { IFeeConfig, IGasConfig, IMemoConfig } from "@owallet/hooks";
 import { toDisplay, useLanguage } from "@owallet/common";
 import { ChainIdEnum } from "@owallet/common";
 import { Bech32Address } from "@owallet/cosmos";
-import Web3 from 'web3';
+import Web3 from "web3";
 import { Card } from "../../components/common/card";
 import colors from "../../theme/colors";
 import { Text } from "../../components/common/text";
