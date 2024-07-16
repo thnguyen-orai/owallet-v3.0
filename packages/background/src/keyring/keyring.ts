@@ -8,10 +8,7 @@ import {
   splitPathStringToHDPath,
   typeBtcLedgerByAddress,
 } from "@owallet/common";
-import * as BytesUtils from "@ethersproject/bytes";
-import { keccak256 } from "@ethersproject/keccak256";
-import { serialize } from "@ethersproject/transactions";
-import { Wallet } from "@ethersproject/wallet";
+import { utils, Wallet } from "ethers";
 import {
   getLedgerAppNameByNetwork,
   getCoinTypeByChainId,
@@ -1174,14 +1171,16 @@ export class KeyRing {
       nonce,
       chainId: Number(chainId),
     };
-    const serializedTx = serialize(finalMessage).replace("0x", "");
+    const serializedTx = utils
+      .serializeTransaction(finalMessage)
+      .replace("0x", "");
     const signature = await this.sign(
       env,
       chainId,
       60,
       Buffer.from(serializedTx, "hex")
     );
-    const signedTx = serialize(finalMessage, {
+    const signedTx = utils.serializeTransaction(finalMessage, {
       r: `0x${signature.r}`,
       s: `0x${signature.s}`,
       v: parseInt(signature.v, 16),
@@ -1355,11 +1354,11 @@ export class KeyRing {
     message: Uint8Array
   ): Promise<Uint8Array> {
     const ethWallet = new Wallet(privKey.toBytes());
-    const signature = ethWallet._signingKey().signDigest(keccak256(message));
-    const splitSignature = BytesUtils.splitSignature(signature);
-    return BytesUtils.arrayify(
-      BytesUtils.concat([splitSignature.r, splitSignature.s])
-    );
+    const signature = ethWallet
+      ._signingKey()
+      .signDigest(utils.keccak256(message));
+    const splitSignature = utils.splitSignature(signature);
+    return utils.arrayify(utils.concat([splitSignature.r, splitSignature.s]));
   }
 
   public async signProxyDecryptionData(
