@@ -40,7 +40,7 @@
     "@owallet/unit": "^0.9.12",
     "@sentry/react": "^8.17.0",
     "@sentry/tracing": "^7.114.0",
-    "ethers": "^5.7.2",
+    "ethers": "^6.0.0",
     "@tatumio/tatum": "^4.2.32",
     "@walletconnect/client": "^1.8.0",
     "firebase": "^10.7.0",
