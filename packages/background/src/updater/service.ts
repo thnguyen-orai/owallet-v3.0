@@ -2,7 +2,7 @@ import { inject, singleton, delay } from "tsyringe";
 import { TYPES } from "../types";
 
 import { ChainInfo } from "@owallet/types";
-import { fetchAdapter } from "@owallet/common";
+// import { fetchAdapter } from "@owallet/common";
 import Axios from "axios";
 import { KVStore } from "@owallet/common";
 import { ChainIdHelper } from "@owallet/cosmos";
@@ -161,7 +161,7 @@ export class ChainUpdaterService {
 
     const instance = Axios.create({
       baseURL: chainInfo.rpc,
-      adapter: fetchAdapter,
+      // adapter: fetchAdapter,
     });
 
     // Get the status to get the chain id.

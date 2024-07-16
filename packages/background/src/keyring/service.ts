@@ -27,7 +27,7 @@ import TronWeb from "tronweb";
 
 import {
   KVStore,
-  fetchAdapter,
+  // fetchAdapter,
   EVMOS_NETWORKS,
   MyBigInt,
   escapeHTML,
@@ -1001,7 +1001,7 @@ export class KeyRingService {
     try {
       const chainInfo = await this.chainsService.getChainInfo(chainId);
       const tronWeb = TronWebProvider(chainInfo.rpc);
-      tronWeb.fullNode.instance.defaults.adapter = fetchAdapter;
+      // tronWeb.fullNode.instance.defaults.adapter = fetchAdapter;
       return await tronWeb.trx.sendRawTransaction(transaction);
     } catch (error) {
       throw error;
@@ -1030,7 +1030,7 @@ export class KeyRingService {
     try {
       const chainInfo = await this.chainsService.getChainInfo(chainId);
       const tronWeb = TronWebProvider(chainInfo.rpc);
-      tronWeb.fullNode.instance.defaults.adapter = fetchAdapter;
+      // tronWeb.fullNode.instance.defaults.adapter = fetchAdapter;
 
       const chainParameters = await tronWeb.trx.getChainParameters();
 
@@ -1108,7 +1108,7 @@ export class KeyRingService {
       const chainInfo = await this.chainsService.getChainInfo(chainId);
       const tronWeb = TronWebProvider(chainInfo.rpc);
 
-      tronWeb.fullNode.instance.defaults.adapter = fetchAdapter;
+      // tronWeb.fullNode.instance.defaults.adapter = fetchAdapter;
       let transaction: any;
 
       if (newData?.currency?.contractAddress) {

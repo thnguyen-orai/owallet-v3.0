@@ -1,6 +1,6 @@
 import { delay, inject, singleton } from "tsyringe";
 import { TYPES } from "../types";
-import { fetchAdapter } from "@owallet/common";
+// import { fetchAdapter } from "@owallet/common";
 import Axios from "axios";
 import { ChainInfoWithEmbed, ChainsService } from "../chains";
 import { PermissionService } from "../permission";
@@ -33,7 +33,7 @@ export async function request(
     ...{
       baseURL: rpc,
     },
-    adapter: fetchAdapter,
+    // adapter: fetchAdapter,
   });
 
   const response = await restInstance.post(
@@ -88,7 +88,7 @@ export class BackgroundTxService {
         baseURL: chainInfo.rest,
       },
       ...chainInfo.restConfig,
-      adapter: fetchAdapter,
+      // adapter: fetchAdapter,
     });
 
     this.notification.create({

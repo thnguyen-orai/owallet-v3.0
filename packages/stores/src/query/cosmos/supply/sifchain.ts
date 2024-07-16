@@ -1,6 +1,6 @@
 import { ObservableQuery } from "../../../common";
 import { KVStore } from "@owallet/common";
-import { fetchAdapter } from "@owallet/common";
+// import { fetchAdapter } from "@owallet/common";
 import Axios from "axios";
 import { computed, makeObservable } from "mobx";
 
@@ -12,7 +12,7 @@ export class ObservableQuerySifchainLiquidityAPY extends ObservableQuery<Sifchai
   constructor(kvStore: KVStore, chainId: string) {
     const instance = Axios.create({
       baseURL: "https://data.sifchain.finance/",
-      adapter: fetchAdapter,
+      // adapter: fetchAdapter,
     });
 
     super(kvStore, instance, `beta/validator/stakingRewards`);
