@@ -24,7 +24,7 @@
     "buffer": "^6.0.3",
     "delay": "^4.4.0",
     "axios": "^1.7.2",
-    "web3": "^1.10.4",
+    "web3": "^4.0.1",
     "querystring":"^0.2.1"
   },
   "devDependencies": {
