@@ -51,7 +51,7 @@ export class ObservableQueryGasEvmContractInner extends ObservableChainQuery<num
       );
       //TODO: need check for toWei method with params: 'gwei'
       const estimateGas = await tokenInfo.methods
-        .transfer(to, Web3.utils.toWei(amount, "gwei"))
+        .transfer(to, Web3.utils.toWei(amount))
         .estimateGas({
           from: from,
         });

@@ -13,7 +13,6 @@ import { EmbedChainInfos } from "../config";
 import { Hash } from "@owallet/crypto";
 import bs58 from "bs58";
 import { ethers } from "ethers";
-import Web3 from "web3";
 import TronWeb from "tronweb";
 import "dotenv/config";
 export const getFavicon = (url) => {
@@ -185,34 +184,7 @@ export const decodeParams = async (types, output, ignoreMethodHash) => {
   }, []);
 };
 
-export const encodeParams = async (inputs) => {
-  let typesValues = inputs;
-  let parameters = "";
 
-  if (typesValues.length == 0) return parameters;
-  const abiCoder = new AbiCoder();
-  let types = [];
-  const values = [];
-
-  for (let i = 0; i < typesValues.length; i++) {
-    let { type, value } = typesValues[i];
-    if (type == "address") value = value.replace(ADDRESS_PREFIX_REGEX, "0x");
-    else if (type == "address[]")
-      value = value.map((v) =>
-        Web3.utils.toHex(v).replace(ADDRESS_PREFIX_REGEX, "0x")
-      );
-    types.push(type);
-    values.push(value);
-  }
-
-  console.log(types, values);
-  try {
-    parameters = abiCoder.encode(types, values).replace(/^(0x)/, "");
-  } catch (ex) {
-    console.log(ex);
-  }
-  return parameters;
-};
 export const estimateBandwidthTron = (signedTxn) => {
   const DATA_HEX_PROTOBUF_EXTRA = 3;
   const MAX_RESULT_SIZE_IN_TX = 64;

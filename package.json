@@ -120,8 +120,9 @@
     "tronweb": "5.3.2",
     "secretjs": "1.12.5",
     "axios": "1.7.2",
-    "web3": "4.11.0",
-    "axios-extensions":"3.1.7"
+    "web3": "1.10.4",
+    "axios-extensions":"3.1.7",
+    "@oraichain/oraidex-common":"1.0.89"
   },
   "browser": {
     "assert": false

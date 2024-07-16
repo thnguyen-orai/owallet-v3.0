@@ -5,7 +5,7 @@ import { observer } from "mobx-react-lite";
 import moment from "moment";
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
-import { BarChart, LineChart } from "react-native-chart-kit";
+// import { BarChart, LineChart } from "react-native-chart-kit";
 import { API } from "../../common/api";
 import { useSmartNavigation } from "../../navigation.provider";
 import { useStore } from "../../stores";
@@ -240,7 +240,7 @@ export const DashboardCard: FunctionComponent<{
           label={`Empty data.\nPlease pull to refresh.`}
         />
       ) : null}
-      {!isNetworkError && active === "price" ? (
+      {/* {!isNetworkError && active === "price" ? (
         <LineChart
           data={data}
           withDots={false}
@@ -261,7 +261,7 @@ export const DashboardCard: FunctionComponent<{
           yAxisSuffix={chartSuffix}
           chartConfig={chartConfig}
         />
-      ) : null}
+      ) : null} */}
     </View>
   );
 });

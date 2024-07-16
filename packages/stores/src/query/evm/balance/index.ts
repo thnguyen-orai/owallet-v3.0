@@ -7,7 +7,6 @@ import {
   KVStore,
   MyBigInt,
   parseRpcBalance,
-  Web3Provider,
 } from "@owallet/common";
 import { ChainGetter, CoinPrimitive, QueryResponse } from "../../../common";
 import { computed, makeObservable, override } from "mobx";

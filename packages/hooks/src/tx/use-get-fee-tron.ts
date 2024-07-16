@@ -1,7 +1,6 @@
 import { Int } from "@owallet/unit";
 import {
   DEFAULT_FEE_LIMIT_TRON,
-  encodeParams,
   estimateBandwidthTron,
   EXTRA_FEE_LIMIT_TRON,
   getEvmAddress,
