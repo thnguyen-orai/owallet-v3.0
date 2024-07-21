@@ -53,7 +53,7 @@ export class ObservableQueryValidatorThumbnail extends ObservableQuery<KeybaseRe
   constructor(kvStore: KVStore, validator: Validator) {
     const instance = Axios.create({
       baseURL: "https://keybase.io/",
-      // adapter: fetchAdapter,
+      adapter: "fetch",
     });
 
     super(

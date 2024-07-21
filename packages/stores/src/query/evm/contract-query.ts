@@ -32,6 +32,7 @@ export class ObservableEvmContractChainQuery<
       const resultFetchBalance = response.data;
       const provider = this.chainGetter.getChain(this.chainId).rest;
       const web3 = new Web3(provider);
+      // @ts-ignore
       const tokenInfo = new web3.eth.Contract(ERC20_ABI, this.contractAddress);
 
       const tokenDecimal = await tokenInfo.methods.decimals().call();

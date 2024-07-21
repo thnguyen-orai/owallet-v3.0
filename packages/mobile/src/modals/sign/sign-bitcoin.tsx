@@ -24,7 +24,7 @@ import { AmountCard, WasmExecutionMsgView } from "@src/modals/sign/components";
 import ItemReceivedToken from "@src/screens/transactions/components/item-received-token";
 import OWButtonGroup from "@src/components/button/OWButtonGroup";
 import WrapViewModal from "@src/modals/wrap/wrap-view-modal";
-
+import Web3 from "web3";
 import FastImage from "react-native-fast-image";
 import { useTheme } from "@src/themes/theme-provider";
 import { shortenAddress } from "@src/utils/helper";
@@ -91,7 +91,7 @@ export const SignBitcoinModal: FunctionComponent<{
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         const msgs = data.data.data?.msgs;
-        console.log(msgs, "msgsmsgs");
+
         chainStore.selectChain(data.data.chainId);
         setDataSign(data);
         if (msgs?.amount) {

@@ -35,6 +35,7 @@ export enum ChainIdEnum {
   Oraichain = "Oraichain",
   OraichainTestnet = "Oraichain-testnet",
   OraiBridge = "oraibridge-subnet-2",
+  OraiBTCBridge = "oraibtc-mainnet-1",
   KawaiiCosmos = "kawaii_6886-1",
   KawaiiEvm = "0x1ae6",
   Ethereum = "0x01",
@@ -52,6 +53,7 @@ export enum ChainIdEnum {
   Injective = "injective-1",
   Neutaro = "Neutaro-1",
   Noble = "noble-1",
+  Stargaze = "stargaze-1",
 }
 
 export enum KADOChainNameEnum {
@@ -67,6 +69,7 @@ export enum KADOChainNameEnum {
   "0x2b6653dc" = "TRON",
   "0x38" = "BNB",
   "noble-1" = "NOBLE",
+  "stargaze-1" = "STARGAZE",
 }
 
 export enum ChainNameEnum {
@@ -88,6 +91,7 @@ export enum ChainNameEnum {
   OasisEmerald = "Oasis Emerald",
   Neutaro = "Neutaro",
   Noble = "Noble",
+  Stargaze = "Stargaze",
 }
 
 export const restBtc = {

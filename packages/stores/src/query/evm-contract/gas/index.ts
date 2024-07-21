@@ -49,7 +49,6 @@ export class ObservableQueryGasEvmContractInner extends ObservableChainQuery<num
         ERC20_ABI,
         contract_address
       );
-      //TODO: need check for toWei method with params: 'gwei'
       const estimateGas = await tokenInfo.methods
         .transfer(to, Web3.utils.toWei(amount))
         .estimateGas({

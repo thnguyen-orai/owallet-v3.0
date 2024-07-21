@@ -22,9 +22,20 @@ import LottieView from "lottie-react-native";
 import { metrics } from "@src/themes";
 import ErrorBoundary from "react-native-error-boundary";
 import { ErrorBoundaryFallback } from "./screens/error-boundary/error-boundary";
-const queryClient = new QueryClient();
+import { ApolloProvider } from "@apollo/client";
+import client from "./graphql/apollo-client";
+import branch, { BranchEvent, BranchEventParams } from "react-native-branch";
 
-// Prevent native splash screen from autohiding.
+const queryClient = new QueryClient();
+// Call `setRequestMetadata` before `subscribe`
+branch.subscribe({
+  onOpenStart: (params) => {
+    console.log("Subscribed to branch successfully!!" + params);
+  },
+  onOpenComplete: (params2) => {
+    console.log("Subscribed to branch successfully!!", params2);
+  },
+});
 
 // we already log in debugging tools
 LogBox.ignoreAllLogs();
@@ -72,12 +83,23 @@ export const App = () => {
 
   const enableAnalytics = async () => {
     await analytics().setAnalyticsCollectionEnabled(true);
-  };
+    // Define event data
 
+    let params: BranchEventParams = {
+      customData: {
+        test: "test",
+      },
+    };
+
+    // Create event and pass null if no BranchUniversalObject is used
+    let event = new BranchEvent(`OWallet Test ${Platform.OS}`, null, params);
+
+    // Log event
+    event.logEvent();
+  };
   useEffect(() => {
     SplashScreen.hide();
     enableAnalytics();
-
     return () => {};
   }, []);
   if (isInit) {
@@ -101,30 +123,32 @@ export const App = () => {
           flex: 1,
         }}
       >
-        <StyleProvider>
-          <StoreProvider>
-            <ThemeProvider>
-              <AppIntlProviderWithStorage>
-                <SafeAreaProvider>
-                  <ModalsProvider>
-                    <PopupRootProvider>
-                      <LoadingScreenProvider>
-                        <ConfirmModalProvider>
-                          <InteractionModalsProivder>
-                            <QueryClientProvider client={queryClient}>
-                              <AppNavigation />
-                            </QueryClientProvider>
-                          </InteractionModalsProivder>
-                        </ConfirmModalProvider>
-                      </LoadingScreenProvider>
-                    </PopupRootProvider>
-                  </ModalsProvider>
-                </SafeAreaProvider>
-              </AppIntlProviderWithStorage>
-              <FlashMessage position="top" />
-            </ThemeProvider>
-          </StoreProvider>
-        </StyleProvider>
+        <ApolloProvider client={client}>
+          <StyleProvider>
+            <StoreProvider>
+              <ThemeProvider>
+                <AppIntlProviderWithStorage>
+                  <SafeAreaProvider>
+                    <ModalsProvider>
+                      <PopupRootProvider>
+                        <LoadingScreenProvider>
+                          <ConfirmModalProvider>
+                            <InteractionModalsProivder>
+                              <QueryClientProvider client={queryClient}>
+                                <AppNavigation />
+                              </QueryClientProvider>
+                            </InteractionModalsProivder>
+                          </ConfirmModalProvider>
+                        </LoadingScreenProvider>
+                      </PopupRootProvider>
+                    </ModalsProvider>
+                  </SafeAreaProvider>
+                </AppIntlProviderWithStorage>
+                <FlashMessage position="top" />
+              </ThemeProvider>
+            </StoreProvider>
+          </StyleProvider>
+        </ApolloProvider>
       </GestureHandlerRootView>
     </ErrorBoundary>
   );

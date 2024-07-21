@@ -18,6 +18,7 @@ import { useUnmount } from "../../hooks";
 import { FeeInSign } from "./fee";
 import { renderAminoMessage } from "./amino";
 import { renderDirectMessage } from "./direct";
+import crashlytics from "@react-native-firebase/crashlytics";
 import { BottomSheetProps } from "@gorhom/bottom-sheet";
 import OWText from "@src/components/text/ow-text";
 import WrapViewModal from "@src/modals/wrap/wrap-view-modal";
@@ -43,10 +44,6 @@ export const SignModal: FunctionComponent<{
     useUnmount(() => {
       signInteractionStore.rejectAll();
     });
-
-    console.log("all in here");
-
-    const style = useStyle();
 
     const [signer, setSigner] = useState("");
 
@@ -126,6 +123,9 @@ export const SignModal: FunctionComponent<{
         ? signDocHelper.signDocWrapper.aminoSignDoc.msgs
         : signDocHelper.signDocWrapper.protoSignDoc.txMsgs
       : [];
+
+    console.log("msgs", msgs);
+
     const isDisable =
       signDocWapper == null ||
       signDocHelper.signDocWrapper == null ||
@@ -142,6 +142,7 @@ export const SignModal: FunctionComponent<{
           );
         }
       } catch (error) {
+        crashlytics().recordError(error);
         console.log(error);
       }
     };
@@ -153,6 +154,7 @@ export const SignModal: FunctionComponent<{
           signInteractionStore.rejectAll();
         }
       } catch (error) {
+        crashlytics().recordError(error);
         console.error(error);
       }
     };

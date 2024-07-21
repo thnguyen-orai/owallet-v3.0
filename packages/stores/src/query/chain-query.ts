@@ -31,7 +31,7 @@ export class ObservableChainQuery<
         baseURL: baseURL ? baseURL : chainInfo.rest,
       },
       ...(restConfig ? restConfig : chainInfo.restConfig),
-      // adapter: fetchAdapter,
+      adapter: "fetch",
     });
 
     super(kvStore, instance, url, data ? { data } : null);

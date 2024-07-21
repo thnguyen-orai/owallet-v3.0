@@ -32,7 +32,6 @@ export class ObservableQueryErc20ContactInfoInner extends ObservableChainQuery<E
     );
     // @ts-ignore
     const contract = new web3.eth.Contract(ERC20_ABI, this.contractAddress);
-
     const tokenDecimal = await contract.methods.decimals().call();
     const tokenSymbol = await contract.methods.symbol().call();
     const tokenName = await contract.methods.name().call();
@@ -47,7 +46,6 @@ export class ObservableQueryErc20ContactInfoInner extends ObservableChainQuery<E
         decimals: parseInt(tokenDecimal),
         name: tokenName,
         symbol: tokenSymbol,
-
         total_supply: total_supply,
       },
     };
