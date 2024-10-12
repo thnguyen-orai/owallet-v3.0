@@ -156,7 +156,7 @@
     "text-encoding": "^0.7.0",
     "utility-types": "^3.10.0",
     "@gorhom/bottom-sheet": "4.4.7",
-    "web3": "1.10.0",
+    "web3": "4.0.1",
     "mobx-react-lite": "^4.0.7"
   },
   "devDependencies": {
