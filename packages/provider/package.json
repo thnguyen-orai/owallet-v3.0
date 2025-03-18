@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@cosmjs/launchpad": "^0.27.1",
-    "@cosmjs/proto-signing": "^0.29.3",
+    "@cosmjs/proto-signing": "^0.33.1",
     "@owallet/router": "^0.9.6",
     "@owallet/background": "^0.9.16",
     "@owallet/types": "^0.9.12",
