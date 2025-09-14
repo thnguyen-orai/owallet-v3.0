@@ -20,7 +20,7 @@
   "dependencies": {
     "@cosmjs/encoding": "^0.29.3",
     "@cosmjs/launchpad": "^0.27.1",
-    "@cosmjs/tendermint-rpc": "^0.29.4",
+    "@cosmjs/tendermint-rpc": "^0.32.0",
     "@hanchon/ethermint-address-converter": "^1.1.0",
     "@owallet/background": "^0.9.16",
     "@owallet/common": "^0.9.10",
@@ -29,7 +29,7 @@
     "@owallet/router": "^0.9.6",
     "@owallet/types": "^0.9.12",
     "@owallet/unit": "^0.9.12",
-    "axios": "^1.7.2",
+    "axios": "^1.12.0",
     "buffer": "^6.0.3",
     "cosmjs-types": "^0.6.1",
     "deepmerge": "^4.2.2",
