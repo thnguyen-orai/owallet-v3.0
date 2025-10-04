@@ -39,7 +39,7 @@
     "@cosmjs/launchpad": "^0.27.1",
     "react-native-tab-view": "^3.5.2",
     "react-native-haptic-feedback": "^2.2.0",
-    "@cosmjs/proto-signing": "^0.29.3",
+    "@cosmjs/proto-signing": "^0.34.0",
     "@cosmjs/stargate": "^0.31.0",
     "fetch-retry": "^6.0.0",
     "@oasisprotocol/client": "^1.0.0",
@@ -156,7 +156,7 @@
     "text-encoding": "^0.7.0",
     "utility-types": "^3.10.0",
     "@gorhom/bottom-sheet": "4.4.7",
-    "web3": "1.10.0",
+    "web3": "4.0.1",
     "mobx-react-lite": "^4.0.7"
   },
   "devDependencies": {
