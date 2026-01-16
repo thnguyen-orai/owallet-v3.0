@@ -44,7 +44,7 @@
     "@tatumio/tatum": "^4.2.32",
     "@walletconnect/client": "^1.6.4",
     "bootstrap":"5.3.3",
-    "firebase": "^10.7.0",
+    "firebase": "^11.0.0",
     "aes-js": "^3.1.2",
     "amplitude-js": "^8.16.0",
     "assert": "^2.0.0",
