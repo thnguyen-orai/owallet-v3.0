@@ -20,7 +20,7 @@
   "dependencies": {
     "@cosmjs/encoding": "^0.29.3",
     "@cosmjs/launchpad": "^0.27.1",
-    "@cosmjs/tendermint-rpc": "^0.29.4",
+    "@cosmjs/tendermint-rpc": "^0.34.0",
     "@hanchon/ethermint-address-converter": "^1.1.0",
     "@owallet/background": "^0.9.16",
     "@owallet/common": "^0.9.10",
@@ -39,6 +39,6 @@
     "mobx-utils": "^6.0.8",
     "p-queue": "^6.6.2",
     "utility-types": "^3.10.0",
-    "web3": "1.10.0"
+    "web3": "4.0.1"
   }
 }
