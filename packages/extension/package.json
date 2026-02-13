@@ -17,7 +17,7 @@
     "version": "npx zx ./scripts/lerna-lifecyle-version.mjs"
   },
   "dependencies": {
-    "@cosmjs/cosmwasm-stargate": "^0.31.0",
+    "@cosmjs/cosmwasm-stargate": "^0.32.0",
     "react-sliding-pane": "^7.3.0",
     "@cosmjs/encoding": "^0.29.3",
     "@cosmjs/launchpad": "^0.27.1",
@@ -48,7 +48,7 @@
     "aes-js": "^3.1.2",
     "amplitude-js": "^8.16.0",
     "assert": "^2.0.0",
-    "axios": "^1.7.2",
+    "axios": "^1.13.5",
     "bip39": "^3.0.2",
     "buffer": "^6.0.3",
     "lodash": "^4.17.21",
